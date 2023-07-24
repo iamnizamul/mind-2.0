@@ -33,6 +33,7 @@ html {
 body {
   display: flex;
   height: calc(100vh - 10rem);
+  /* overflow-y: hidden; */
 }
 
 header {

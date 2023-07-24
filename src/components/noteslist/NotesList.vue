@@ -3,7 +3,7 @@
     <div class="list-container">
       <ul>
         <list-item
-          v-for="note in notes"
+          v-for="note in sortedNotes"
           :key="note.id"
           :id="note.id"
           :title="note.title"
@@ -18,9 +18,12 @@
 <script setup>
 import ListItem from "./ListItem.vue";
 import { useNoteStore } from "../../store/notestore.js";
+import { computed } from 'vue';
 
 const store = useNoteStore();
 const notes = store.getnotes;
+
+const sortedNotes = computed(() => notes.sort((a, b) => a.id - b.id).sort((a, b) => b.isBookmarked - a.isBookmarked))
 </script>
 
 
