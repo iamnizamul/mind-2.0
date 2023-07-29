@@ -14,7 +14,8 @@ export default {
 button {
     font-size: 2rem;
     padding: 1rem 3rem 1rem 3rem;
-    border-radius: 10px;
+    border-radius: 11px;
     border: none;
+    cursor: pointer;
 }
 </style>

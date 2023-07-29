@@ -38,7 +38,7 @@ const sortedNotes = computed(() => notes.sort((a, b) => a.id - b.id).sort((a, b)
 }
 
 .list-container {
-    /* background-color: red; */
+  /* background-color: red; */
     margin: 5rem;
 }
 

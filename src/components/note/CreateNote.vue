@@ -6,11 +6,11 @@
           <input
             type="text"
             id="title"
-            class="title"
+            
             v-model="title.val"
             placeholder="Mind2.0"
             required
-            @blur="clearValidity('title')"
+            
           />
         </div>
         <div class="note-container" :class="{invalid: !desc.isValid}">
@@ -19,13 +19,13 @@
             id="note"
             cols=""
             rows="5"
-            class="note"
+            
             v-model="desc.val"
             placeholder="Hi, I'm Mind2.0. Your second mind.
 In this busy world, there is a lot to remember, so that few things may be not be able to remember.
 Don't worry, I'm here. I can remember for you."
             required
-            @blur="clearValidity('desc')"
+            
           />
         </div>
       </div>
@@ -42,6 +42,9 @@ Don't worry, I'm here. I can remember for you."
 import BaseButton from "../ui/BaseButton.vue";
 import { useNoteStore } from "../../store/notestore.js";
 import { ref, reactive } from "vue";
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const title = reactive({
   val: "",
@@ -74,21 +77,22 @@ function validateForm() {
 
 function save() {
   validateForm();
+  console.log(title.isValid);
 
   if (!formIsValid.value) {
     return
   }
+  id.value = String(Date.now());
     store.addNewElement({
-      id: String(Date.now()),
+      id: id.value,
       title: title.val,
       desc: desc.val,
       isBookmarked: false,
     });
-    title.val = "";
-    desc.val = "";
-  // } else {
-  //   return
-  // }
+    router.push({path: '/' + id.value})
+
+    // title.val = "";
+    // desc.val = "";
 
 
 
@@ -120,6 +124,7 @@ function save() {
   width: 100%;
   margin-bottom: 4rem;
   /* border-radius: 10px; */
+  border: none;
   
 }
 
@@ -127,7 +132,8 @@ input {
   width: 100%;
   border-radius: 10px;
   font-size: 3rem;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
+  border: none;
   padding: 1rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
@@ -140,19 +146,12 @@ input {
 textarea {
   width: 100%;
   height: 36rem;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
+  border: none;
   border-radius: 10px;
   padding: 1rem;
   font-size: 1.8rem;
   font-weight: 500;
-}
-
-.show--error {
-  color: white;
-}
-
-.hide--error {
-  visibility: hidden;
 }
 
 .button {

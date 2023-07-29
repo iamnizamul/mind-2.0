@@ -1,36 +1,49 @@
 <template>
-  <div class="container">
-    <div class="form-container">
-      <div class="form">
-        <div class="title-container" :class="{ invalid: !formIsValid }">
-          <input
-            type="text"
-            id="title"
-            class="title"
-            v-model="title.val"
-            required
-            @blur="clearValidity('title')"
-          />
-        </div>
-        <div class="note-container" :class="{ invalid: !formIsValid }">
-          <textarea
-            name=""
-            id="note"
-            cols=""
-            rows="5"
-            class="note"
-            v-model="desc.val"
-            required
-            @blur="clearValidity('desc')"
-          />
-        </div>
-      </div>
-      <p v-if="!formIsValid" class="invalid">
-        Please fill both title and description
+  <div>
+    <base-dialog
+      :show="showDialog"
+      title="Confirm"
+      @proceed="accept"
+      @close="decline"
+    >
+      <p class="dialog">
+        Are you sure you want to save the changes you made to this existing
+        note?
       </p>
-      <p v-else></p>
-      <div class="button">
-        <base-button @click="saveChanges">Save Changes</base-button>
+    </base-dialog>
+    <div class="container">
+      <div class="form-container">
+        <div class="form">
+          <div class="title-container" :class="{ invalid: !formIsValid }">
+            <input
+              type="text"
+              id="title"
+              class="title"
+              v-model="title.val"
+              required
+              @blur="clearValidity('title')"
+            />
+          </div>
+          <div class="note-container" :class="{ invalid: !formIsValid }">
+            <textarea
+              name=""
+              id="note"
+              cols=""
+              rows="5"
+              class="note"
+              v-model="desc.val"
+              required
+              @blur="clearValidity('desc')"
+            />
+          </div>
+        </div>
+        <p v-if="!formIsValid" class="invalid">
+          Please fill both title and description
+        </p>
+        <p v-else></p>
+        <div class="button">
+          <base-button @click="saveChanges">Save Changes</base-button>
+        </div>
       </div>
     </div>
   </div>
@@ -39,13 +52,15 @@
 <script setup>
 import BaseButton from "../ui/BaseButton.vue";
 import { useNoteStore } from "../../store/notestore.js";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { computed, ref, reactive } from "vue";
 
 const store = useNoteStore();
 
 const route = useRoute();
+const router = useRouter();
 const id = computed(() => route.params.id);
+const showDialog = ref(false);
 const title = reactive({
   val: "",
   isValid: true,
@@ -88,12 +103,23 @@ function saveChanges() {
 
   if (!formIsValid.value) return;
 
+  showDialog.value = true;
+  return;
+  // console.log(showDialog.value);
+}
+
+function accept() {
   store.saveChanges({
     id: id.value,
     title: title.val,
     description: desc.val,
   });
+  router.push({ path: "/" + id.value });
   console.log(title.val);
+}
+
+function decline() {
+  showDialog.value = false
 }
 </script>
 
@@ -163,5 +189,10 @@ p {
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
+}
+
+.dialog {
+  color: #555;
+  font-size: 1.8rem;
 }
 </style>

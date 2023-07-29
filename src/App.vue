@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <header>
+  <div class="container">
+    <div class="header">
     <the-header></the-header>
-    </header>
-    <body>
+    </div>
+    <div class="body">
       <router-view></router-view>
       <notes-list></notes-list>
-    </body>
+    </div>
   </div>
 </template>
 
@@ -30,13 +30,13 @@ html {
   font-size: 62.5%;
 }
 
-body {
+.body {
   display: flex;
   height: calc(100vh - 10rem);
   /* overflow-y: hidden; */
 }
 
-header {
+.header {
   width: 100%;
 }
 

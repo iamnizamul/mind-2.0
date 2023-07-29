@@ -1,21 +1,33 @@
 <template>
-  <div class="container">
-    <div class="form-container">
-      <div class="form">
-        <div class="title-container">
-          {{ title }} 
+  <div>
+    <base-dialog
+      :show="showDialog"
+      title="Confirm"
+      @proceed="accept"
+      @close="decline"
+    >
+      <p class="dialog">
+        Are you sure you want to delete this existing
+        note?
+      </p>
+    </base-dialog>
+    <div class="container">
+      <div class="form-container">
+        <div class="form">
+          <div class="title-container">
+            {{ title }}
 
-          <!-- <input
+            <!-- <input
           type="text"
           id="title"
           class="title"
           v-model="title"
           placeholder="Mind2.0"
         /> -->
-        </div>
-        <div class="note-container">
-          {{ description }}
-          <!-- <textarea
+          </div>
+          <div class="note-container">
+            {{ description }}
+            <!-- <textarea
           name=""
           id="note"
           cols=""
@@ -26,15 +38,16 @@
 In this busy world, there is a lot to remember so that few things may be not be able to remember.
 Don't worry, I'm here. I can remember for you."
         /> -->
+          </div>
         </div>
-      </div>
-      <div class="button">
-        <router-link :to="'/' + id + '/editnote'">
-          <base-button>Edit</base-button>
-        </router-link>
-        <router-link :to="'/createnote'">
-          <base-button @click="deleteNote">Delete</base-button>
-        </router-link>
+        <div class="button">
+          <router-link :to="'/' + id + '/editnote'">
+            <base-button>Edit</base-button>
+          </router-link>
+          <!-- <router-link :to="'/createnote'"> -->
+            <base-button @click="deleteNote">Delete</base-button>
+          <!-- </router-link> -->
+        </div>
       </div>
     </div>
   </div>
@@ -43,11 +56,14 @@ Don't worry, I'm here. I can remember for you."
 <script setup>
 import BaseButton from "../ui/BaseButton.vue";
 import { useNoteStore } from "../../store/notestore.js";
-import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { computed, ref } from "vue";
 
 const store = useNoteStore();
 const route = useRoute();
+const router = useRouter();
+
+const showDialog = ref(false);
 
 const id = computed(() => route.params.id);
 
@@ -59,9 +75,18 @@ const title = computed(() => findNote.value.title);
 const description = computed(() => findNote.value.description);
 
 function deleteNote() {
-  store.deleteNote(id.value);
-  console.log(store.notes);
+  showDialog.value = true
+  // console.log(store.notes);
   // console.log(id.value);
+}
+
+function accept() {
+  store.deleteNote(id.value);
+  router.push({path: '/createnote'})
+}
+
+function decline() {
+  showDialog.value = false
 }
 </script>
 
@@ -133,5 +158,10 @@ function deleteNote() {
   display: flex;
   justify-content: center;
   gap: 4rem;
+}
+
+.dialog {
+  color: #555;
+  font-size: 1.8rem;
 }
 </style>
