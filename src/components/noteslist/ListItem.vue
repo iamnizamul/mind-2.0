@@ -34,7 +34,6 @@ const props = defineProps({
 });
 const store = useNoteStore();
 
-// const isBookmarked = ref("");
 const isBookmarked = computed(() => store.isBookmarkedFn(props.id));
 
 function toggleBookmark() {
@@ -73,7 +72,6 @@ li:hover
 .title-container {
   max-height: 2.4rem;
   margin-bottom: 1rem;
-  /* overflow: hidden; */
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -81,7 +79,6 @@ li:hover
 
 .desc-container {
   max-height: 3.75rem;
-  /* background-color: blue; */
   overflow: hidden;
   word-wrap: break-word;
 }
@@ -89,7 +86,6 @@ li:hover
 h2 {
   font-size: 2.4rem;
   overflow: hidden;
-  /* background-color: red; */
   margin-right: 2.5rem;
   word-wrap: break-word;
 }
@@ -105,11 +101,6 @@ h2 {
 .show-bookmark {
   display: initial;
 }
-
-/* li:link .bookmark-icon,
-li:visited .bookmark-icon {
-  display: initial;
-} */
 
 li:hover .bookmark-icon,
 li:active .bookmark-icon {
@@ -130,21 +121,6 @@ a {
     margin-bottom: 2rem;
   }
 
-  h2 {
-    /* font-size: 1.6rem; */
-  }
-
-  .title-container {
-    /* max-height: 2rem; */
-  }
-
-  p {
-    /* font-size: 1.2rem; */
-  }
-
-  .desc-container {
-    /* max-height: 2.8rem; */
-  }
 
   .bookmark-icon {
   height: 1.6rem;
@@ -177,6 +153,34 @@ a {
   .bookmark-icon {
   height: 1.6rem;
   width: 1.6rem;
+  }
+}
+
+@media (max-width: 30em) {
+  li {
+    padding: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .title-container {
+    max-height: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .desc-container {
+    max-height: 2.4rem;
+  }
+
+  .bookmark-icon {
+  height: 1.2rem;
+  width: 1.2rem;
   }
 }
 

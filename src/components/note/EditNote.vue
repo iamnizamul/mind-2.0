@@ -112,7 +112,6 @@ function saveChanges() {
 
   showDialog.value = true;
   return;
-  // console.log(showDialog.value);
 }
 
 function accept() {
@@ -205,7 +204,8 @@ textarea:focus {
   transition: all 0.3s ease;
 }
 
-.save:hover {
+.save:hover,
+.save:active {
   box-shadow: 0 0 2px 2px #4c319d;
   background-color: #ccc;
   transition: all 0.3s ease;
@@ -232,6 +232,10 @@ p {
 @media (max-width: 62em) {
   .form-container {
     width: 80%;
+  }
+
+  .dialog {
+    font-size: 1.6rem;
   }
 }
 

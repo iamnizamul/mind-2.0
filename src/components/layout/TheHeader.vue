@@ -39,7 +39,6 @@ a {
 header {
   width: 100 vw;
   height: 9rem;
-  /* background-color: #5f3dc4; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,7 +52,8 @@ header {
   width: max-content;
 }
 
-.button:hover {
+.button:hover,
+.button:active {
   background-color: #1c123b;
   color: white;
   transition: all 0.3s ease;
@@ -82,19 +82,13 @@ h1 {
 }
 
 @media (max-width: 53em) {
-  /* header {
-  height: 6rem;
-  } */
 
   h1 {
-    /* font-size: 3rem; */
     margin-left: 3rem;
   }
 
     .button {
       margin-right: 3rem;
-      /* font-size: 1.2rem;
-      padding: 0.7rem 1rem 0.7rem 1rem; */
     }
 }
 

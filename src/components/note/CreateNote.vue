@@ -37,7 +37,6 @@ Don't worry, I'm here. I can remember for you."
 </template>
 
 <script setup>
-// import BaseButton from "../ui/BaseButton.vue";
 import { useNoteStore } from "../../store/notestore.js";
 import { ref, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
@@ -56,8 +55,6 @@ const id = ref("");
 const formIsValid = ref(true);
 
 const store = useNoteStore();
-
-// const storage = computed(() => localStorage.getItem('notes'))
 
 function clearValidity(input) {
   this[input].isValid = true;
@@ -92,16 +89,12 @@ function save() {
 
 
   router.push({ path: "/" + id.value });
-
-  // title.val = "";
-  // desc.val = "";
 }
 </script>
 
 <style scoped>
 .container {
   width: 70vw;
-  /* background-color: yellow; */
   padding: 4% 0;
   display: flex;
   justify-content: center;
@@ -184,7 +177,8 @@ textarea:focus {
   transition: all 0.3s ease;
 }
 
-.save:hover {
+.save:hover,
+.save:active {
   box-shadow: 0 0 2px 2px #4c319d;
   background-color: #ccc;
   transition: all 0.3s ease;

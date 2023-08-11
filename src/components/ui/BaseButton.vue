@@ -18,6 +18,13 @@ button {
     border: none;
     cursor: pointer;
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+button:hover,
+button:active {
+  box-shadow: 0 0 2px 2px #ddd;
+  transition: all 0.3s ease;
 }
 
 

@@ -1,6 +1,6 @@
 # mind2.0
 
-This template should help get you started developing with Vue 3 in Vite.
+Own project created from scratch
 
 ## Recommended IDE Setup
 

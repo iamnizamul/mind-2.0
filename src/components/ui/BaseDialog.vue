@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <teleport to="body"> -->
     <div v-if="show" @click="decline" class="backdrop"></div>
     <transition name="dialog">
       <dialog open v-if="show">
@@ -20,7 +19,6 @@
         </menu>
       </dialog>
     </transition>
-    <!-- </teleport> -->
   </div>
 </template>
 
@@ -106,5 +104,26 @@ menu {
 .dialog-leave-from {
   opacity: 1;
   transform: scale(1);
+}
+
+@media (max-width: 70em) {
+  dialog {
+    left: 30%;
+    width: 40%;
+  }
+}
+
+@media (max-width: 53em) {
+  dialog {
+    left: 20%;
+    width: 60%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  dialog {
+    left: 10%;
+    width: 80%;
+  }
 }
 </style>

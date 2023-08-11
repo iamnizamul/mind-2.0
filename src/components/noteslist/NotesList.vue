@@ -28,11 +28,6 @@ import { computed } from 'vue';
 const store = useNoteStore();
 const storage = computed(() => localStorage.getItem('notes'));
 console.log(storage.value);
-// console.log(JSON.parse(storage.value));
-
-// const notes = computed(() => storage.value? JSON.parse(storage.value) : store.getnotes)
-
-// const notes = storage.value? JSON.parse(localStorage.getItem('notes')): store.getnotes
 const notes = computed(() => store.getnotes);
 
 const sortedNotes = computed(() => {
@@ -45,10 +40,7 @@ console.log(sortedNotes.value.length);
 
 <style scoped>
 .container {
-  /* background-color: #212529; */
   width: 29vw;
-  /* height: calc(100vh - 10rem); */
-  /* padding: 5rem; */
   overflow: auto;
   background: #26184e;
   margin-right: 1vw;
@@ -68,9 +60,7 @@ console.log(sortedNotes.value.length);
 }
 
 .list-container {
-  /* background-color: red; */
     margin: 5rem;
-    /* background-color: red; */
 }
 
 ul {
