@@ -1,25 +1,25 @@
 <template>
   <router-link :to="'/' + id">
-    <li>
-      <div class="title-container">
-        <h2>{{ title }}</h2>
-        <ion-icon
-          v-if="isBookmarked"
-          class="bookmark-icon show-bookmark"
-          name="bookmark-sharp"
-          @click="toggleBookmark"
-        ></ion-icon>
-        <ion-icon
-          v-else
-          class="bookmark-icon"
-          name="bookmark-outline"
-          @click="toggleBookmark"
-        ></ion-icon>
-      </div>
-      <div class="desc-container">
-        <p>{{ description }}</p>
-      </div>
-    </li>
+      <li :key="id">
+        <div class="title-container">
+          <h2>{{ title }}</h2>
+          <ion-icon
+            v-if="isBookmarked"
+            class="bookmark-icon show-bookmark"
+            name="bookmark-sharp"
+            @click="toggleBookmark"
+          ></ion-icon>
+          <ion-icon
+            v-else
+            class="bookmark-icon"
+            name="bookmark-outline"
+            @click="toggleBookmark"
+          ></ion-icon>
+        </div>
+        <div class="desc-container">
+          <p>{{ description }}</p>
+        </div>
+      </li>
   </router-link>
 </template>
 
@@ -34,7 +34,8 @@ const props = defineProps({
 });
 const store = useNoteStore();
 
-const isBookmarked = ref("");
+// const isBookmarked = ref("");
+const isBookmarked = computed(() => store.isBookmarkedFn(props.id));
 
 function toggleBookmark() {
   store.toggleBookmark(props.id);
@@ -50,30 +51,55 @@ li {
   padding: 2rem;
   border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  color: #26184e;
 }
+
+li:hover
+{
+  border: 2px solid #26184e;
+  box-shadow: 0 0 3px 3px #4c319d;
+  scale: 1.1;
+  transition: all 0.3s ease;
+}
+
+.router-link-active li {
+    border: 2px solid #26184e;
+    box-shadow: 0 0 3px 3px #4c319d;
+    background: #c0c6cc;
+} 
 
 .title-container {
   max-height: 2.4rem;
   margin-bottom: 1rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .desc-container {
   max-height: 3.75rem;
   /* background-color: blue; */
   overflow: hidden;
+  word-wrap: break-word;
 }
 
 h2 {
   font-size: 2.4rem;
+  overflow: hidden;
+  /* background-color: red; */
+  margin-right: 2.5rem;
+  word-wrap: break-word;
 }
 
 .bookmark-icon {
   height: 2.4rem;
   width: 2.4rem;
   display: none;
+  position: absolute;
+  right: 0;
 }
 
 .show-bookmark {
@@ -97,4 +123,61 @@ p {
 a {
   text-decoration: none;
 }
+
+@media (max-width: 53em) {
+  li {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    /* font-size: 1.6rem; */
+  }
+
+  .title-container {
+    /* max-height: 2rem; */
+  }
+
+  p {
+    /* font-size: 1.2rem; */
+  }
+
+  .desc-container {
+    /* max-height: 2.8rem; */
+  }
+
+  .bookmark-icon {
+  height: 1.6rem;
+  width: 1.6rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  li {
+    padding: 1rem;
+    margin-bottom: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .title-container {
+    max-height: 2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .desc-container {
+    max-height: 2.8rem;
+  }
+
+  .bookmark-icon {
+  height: 1.6rem;
+  width: 1.6rem;
+  }
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header">
-    <the-header></the-header>
+      <the-header></the-header>
     </div>
     <div class="body">
       <router-view></router-view>
@@ -30,14 +30,23 @@ html {
   font-size: 62.5%;
 }
 
+.container {
+  background: radial-gradient(circle, #392576 ,  #26184e 70%);
+  background-attachment: fixed;
+}
+
 .body {
   display: flex;
-  height: calc(100vh - 10rem);
-  /* overflow-y: hidden; */
+  height: calc(100vh - 9rem);
 }
 
 .header {
   width: 100%;
 }
 
+@media (max-height: 22em) {
+  .body {
+    height: calc(100vh - 6rem);
+  }
+}
 </style>

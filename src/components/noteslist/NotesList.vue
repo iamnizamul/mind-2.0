@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="list-container">
-      <ul>
+      <ul v-if="sortedNotes.length">
         <list-item
           v-for="note in sortedNotes"
           :key="note.id"
@@ -10,6 +10,11 @@
           :description="note.description"
         ></list-item>
       </ul>
+      <div v-else class="empty-list">
+        <h2>
+        No Notes Created
+        </h2>
+      </div>
     </div>
   </div>
 </template>
@@ -21,28 +26,79 @@ import { useNoteStore } from "../../store/notestore.js";
 import { computed } from 'vue';
 
 const store = useNoteStore();
-const notes = store.getnotes;
+const storage = computed(() => localStorage.getItem('notes'));
+console.log(storage.value);
+// console.log(JSON.parse(storage.value));
 
-const sortedNotes = computed(() => notes.sort((a, b) => a.id - b.id).sort((a, b) => b.isBookmarked - a.isBookmarked))
+// const notes = computed(() => storage.value? JSON.parse(storage.value) : store.getnotes)
+
+// const notes = storage.value? JSON.parse(localStorage.getItem('notes')): store.getnotes
+const notes = computed(() => store.getnotes);
+
+const sortedNotes = computed(() => {
+  console.log(notes.value);
+return notes.value.sort((a, b) => b.id - a.id).sort((a, b) => b.isBookmarked - a.isBookmarked)})
+console.log(sortedNotes.value.length);
 </script>
 
 
 
 <style scoped>
 .container {
-  background-color: #212529;
-  width: 30vw;
+  /* background-color: #212529; */
+  width: 29vw;
   /* height: calc(100vh - 10rem); */
   /* padding: 5rem; */
-  overflow-y: scroll;
+  overflow: auto;
+  background: #26184e;
+  margin-right: 1vw;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.container::-webkit-scrollbar {
+  width: 2rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #1c123b;
+  border: 0.4rem solid transparent;
+  border-radius: 2rem;
+  background-clip: padding-box;
 }
 
 .list-container {
   /* background-color: red; */
     margin: 5rem;
+    /* background-color: red; */
 }
 
 ul {
   list-style: none;
+}
+
+.empty-list {
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+
+@media (max-width: 62em) {
+  .list-container {
+    margin: 3.5rem 3.5rem 3.5rem 3.5rem;
+  }
+}
+
+@media (max-width: 53em) {
+  .list-container {
+    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .list-container {
+    margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+  }
 }
 </style>

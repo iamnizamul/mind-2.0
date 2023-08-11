@@ -18,6 +18,7 @@ const router = createRouter({
         {
             path: '/:id/editnote', component: EditNote
         },
+        { path: '/:pathMatch(.*)*', component: CreateNote }
     ]
 })
 

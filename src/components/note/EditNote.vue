@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="noteExist" class="container">
     <base-dialog
       :show="showDialog"
       title="Confirm"
@@ -11,7 +11,6 @@
         note?
       </p>
     </base-dialog>
-    <div class="container">
       <div class="form-container">
         <div class="form">
           <div class="title-container" :class="{ invalid: !formIsValid }">
@@ -42,11 +41,11 @@
         </p>
         <p v-else></p>
         <div class="button">
-          <base-button @click="saveChanges">Save Changes</base-button>
+          <base-button @click="saveChanges" class="save">Save Changes</base-button>
         </div>
       </div>
-    </div>
   </div>
+  <div v-else>{{ router.replace({path: '/createnote'}) }}</div>
 </template>
 
 <script setup>
@@ -60,6 +59,14 @@ const store = useNoteStore();
 const route = useRoute();
 const router = useRouter();
 const id = computed(() => route.params.id);
+
+const findNote = computed(() => {
+  return store.findNote(id.value)
+});
+console.log(findNote.value);
+
+const noteExist = computed(() => findNote.value.title)
+
 const showDialog = ref(false);
 const title = reactive({
   val: "",
@@ -126,64 +133,89 @@ function decline() {
 <style scoped>
 .container {
   width: 70vw;
-  /* height: max-content; */
-  background-color: black;
-  padding: 6rem 0;
+  padding: 4% 0;
   display: flex;
-  /* flex-direction: column; */
-  /* justify-content: center; */
   justify-content: center;
+  overflow: auto;
 }
 
 .form-container {
   height: 100%;
-  width: 80%;
+  width: 70%;
 }
 
 .form {
   width: 100%;
+  height: 75%;
+  margin-bottom: 6%;
 }
 
 .title-container {
   width: 100%;
+  margin-bottom: 2.4rem;
+  /* border: none; */
 }
 
 input {
   width: 100%;
-  font-size: 3rem;
-  margin-bottom: 4rem;
-  border: 1px solid transparent;
   border-radius: 10px;
+  font-size: 2.4rem;
+  /* border: none; */
   padding: 1rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
+  outline: none;
+}
+
+input:hover,
+input:focus {
+  border: 2px solid #26184e;
+  box-shadow: 0 0 5px 5px #4c319d;
 }
 
 .note-container {
   width: 100%;
+  height: calc(100% - 7.4rem);
 }
 
 textarea {
   width: 100%;
-  height: 36rem;
-  border: 1px solid transparent;
+  height: 100%;
+  border: 2px solid #26184e;
   border-radius: 10px;
   padding: 1rem;
   font-size: 1.8rem;
   font-weight: 500;
+  line-height: 1.6;
+  outline: none;
+}
+
+textarea:hover,
+textarea:focus {
+  border: 2px solid #26184e;
+  box-shadow: 0 0 5px 5px #4c319d;
 }
 
 .button {
   width: 100%;
   text-align: center;
-  margin-top: 2.6rem;
+}
+
+.save {
+  transition: all 0.3s ease;
+}
+
+.save:hover {
+  box-shadow: 0 0 2px 2px #4c319d;
+  background-color: #ccc;
+  transition: all 0.3s ease;
 }
 
 p {
   height: 1rem;
-  font-size: 1.4rem;
-  color: red;
   text-align: center;
+  color: red;
+  font-size: 1.4rem;
 }
 
 .invalid input,
@@ -194,5 +226,26 @@ p {
 .dialog {
   color: #555;
   font-size: 1.8rem;
+}
+
+
+@media (max-width: 62em) {
+  .form-container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 53em) {
+  .form-container {
+    width: 85%;
+  }
+
+  input {
+    font-size: 2rem;
+  }
+
+  textarea {
+    font-size: 1.4rem;
+  }
 }
 </style>
