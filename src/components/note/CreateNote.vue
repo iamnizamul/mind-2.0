@@ -19,8 +19,8 @@
             rows="5"
             v-model="desc.val"
             placeholder="Hi, I'm Mind2.0. Your second mind.
-In this busy world, there is a lot to remember, so that few things may be not be able to remember.
-Don't worry, I'm here. I can remember for you."
+            In this busy world, there is a lot to remember, so that few things may be not be able to remember.
+            Don't worry, I'm here. I can remember for you."
             required
           />
         </div>
@@ -109,7 +109,7 @@ function save() {
 .form {
   width: 100%;
   height: 75%;
-  margin-bottom: 6%;
+  margin-bottom: 1%;
 }
 
 .title-container {
@@ -189,6 +189,7 @@ p {
   text-align: center;
   color: red;
   font-size: 1.4rem;
+  margin-bottom: 3%;
 }
 
 .invalid input,

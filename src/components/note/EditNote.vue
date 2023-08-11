@@ -146,7 +146,7 @@ function decline() {
 .form {
   width: 100%;
   height: 75%;
-  margin-bottom: 6%;
+  margin-bottom: 1%;
 }
 
 .title-container {
@@ -216,11 +216,13 @@ p {
   text-align: center;
   color: red;
   font-size: 1.4rem;
+  margin-bottom: 3%;
 }
 
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
+  box-shadow: 0 0 2px 2px #ff6666
 }
 
 .dialog {
