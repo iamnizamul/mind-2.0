@@ -18,9 +18,9 @@
             cols=""
             rows="5"
             v-model="desc.val"
-            placeholder="Hi, I'm Mind2.0. Your second mind.
-            In this busy world, there is a lot to remember, so that few things may be not be able to remember.
-            Don't worry, I'm here. I can remember for you."
+            placeholder="Hi, I'm Mind2.0.
+Your second mind. In this busy world, there is a lot to remember, so that few things may be not be able to remember.
+Don't worry, I'm here. I can remember for you."
             required
           />
         </div>

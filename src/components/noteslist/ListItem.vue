@@ -70,7 +70,7 @@ li:hover
 } 
 
 .title-container {
-  max-height: 2.4rem;
+  max-height: 2.8rem;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
@@ -78,7 +78,7 @@ li:hover
 }
 
 .desc-container {
-  max-height: 3.75rem;
+  max-height: 4rem;
   overflow: hidden;
   word-wrap: break-word;
 }
