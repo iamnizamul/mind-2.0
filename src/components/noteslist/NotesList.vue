@@ -2,6 +2,7 @@
   <div class="container">
     <div class="list-container">
       <ul v-if="sortedNotes.length">
+        <transition-group name="note">
         <list-item
           v-for="note in sortedNotes"
           :key="note.id"
@@ -9,10 +10,11 @@
           :title="note.title"
           :description="note.description"
         ></list-item>
+        </transition-group>
       </ul>
       <div v-else class="empty-list">
         <h2>
-        No Notes Created
+        No Notes Created...
         </h2>
       </div>
     </div>
@@ -71,6 +73,30 @@ ul {
   color: white;
   text-align: center;
   font-size: 1.6rem;
+}
+
+.note-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.note-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.note-enter-active {
+  transition: all 1s ease-out;
+}
+.note-leave-active {
+  transition: all 1s ease-in;
+  position: absolute;
+}
+.note-enter-to,
+.note-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.note-move {
+  transition: transform 0.6s ease;
 }
 
 

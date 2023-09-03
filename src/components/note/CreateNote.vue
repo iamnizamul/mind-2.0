@@ -19,7 +19,7 @@
             rows="5"
             v-model="desc.val"
             placeholder="Hi, I'm Mind2.0.
-Your second mind. In this busy world, there is a lot to remember, so that few things may be not be able to remember.
+Your secondary mind. In this busy world, there is a lot to remember, so that few things may be not be able to remember.
 Don't worry, I'm here. I can remember for you."
             required
           />
@@ -87,7 +87,6 @@ function save() {
     isBookmarked: false,
   });
 
-
   router.push({ path: "/" + id.value });
 }
 </script>
@@ -128,6 +127,10 @@ input {
   outline: none;
 }
 
+input::placeholder {
+  color: #bbb;
+}
+
 input:hover,
 input:focus {
   border: 2px solid #26184e;
@@ -149,6 +152,10 @@ textarea {
   font-weight: 500;
   line-height: 1.6;
   outline: none;
+}
+
+textarea::placeholder {
+  color: #bbb;
 }
 
 textarea:hover,
@@ -214,6 +221,10 @@ p {
 
   textarea {
     font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1.2rem;
   }
 }
 </style>

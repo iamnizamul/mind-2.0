@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="'/' + id">
       <li :key="id">
+  <router-link :to="'/' + id">
         <div class="title-container">
           <h2>{{ title }}</h2>
           <ion-icon
@@ -19,8 +19,8 @@
         <div class="desc-container">
           <p>{{ description }}</p>
         </div>
-      </li>
   </router-link>
+      </li>
 </template>
 
 <script setup>
@@ -75,6 +75,7 @@ li:hover
   display: flex;
   justify-content: space-between;
   position: relative;
+  /* background: red; */
 }
 
 .desc-container {
@@ -86,7 +87,7 @@ li:hover
 h2 {
   font-size: 2.4rem;
   overflow: hidden;
-  margin-right: 2.5rem;
+  margin-right: 2.4rem;
   word-wrap: break-word;
 }
 
@@ -123,8 +124,8 @@ a {
 
 
   .bookmark-icon {
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 2rem;
+  width: 2rem;
   }
 }
 
@@ -136,6 +137,7 @@ a {
 
   h2 {
     font-size: 1.6rem;
+    margin-right: 1.6rem;
   }
 
   .title-container {
@@ -164,6 +166,7 @@ a {
 
   h2 {
     font-size: 1.2rem;
+    margin-right: 1.2rem;
   }
 
   .title-container {

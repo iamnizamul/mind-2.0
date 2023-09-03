@@ -1,5 +1,6 @@
 <template>
-  <div v-if="noteExist" class="container">
+<div>
+
     <base-dialog
       :show="showDialog"
       title="Confirm"
@@ -11,6 +12,7 @@
         note?
       </p>
     </base-dialog>
+  <div v-if="noteExist" class="container">
       <div class="form-container">
         <div class="form">
           <div class="title-container">
@@ -29,6 +31,7 @@
       </div>
   </div>
   <div v-else>{{ router.replace({path: '/createnote'}) }}</div>
+</div>
 </template>
 
 <script setup>
@@ -42,7 +45,9 @@ const router = useRouter();
 
 const showDialog = ref(false);
 
-const id = computed(() => route.params.id);
+// const id = computed(() => route.params.id);
+const id = ref('');
+id.value = route.params.id
 
 const findNote = computed(() => {
   return store.findNote(id.value)
@@ -59,8 +64,10 @@ function deleteNote() {
 }
 
 function accept() {
-  store.deleteNote(id.value);
   router.push({path: '/createnote'})
+  setTimeout(function(){
+    store.deleteNote(id.value);
+  }, 2)
 }
 
 function decline() {

@@ -8,7 +8,7 @@ export const useNoteStore = defineStore({
                 {
                     id: '1',
                     title: 'Skills',
-                    description: 'HTML, CSS, JavaScript, Vue3 jjjjjjjjj jjjjjjjjj jjjjjjjjj jjjjjjjjj jjjjjj jjjjjjjj jjjjjjjj jjjjjjjj jjjjjjjj jjjjjjj jjjjjj jjjjjjjjj jj jjjjjjjjjjjjjjjjjjjjjjjbbbbbbbbbbbbbbbbbhhhhhhhhhhhhhhhh nhhhhhhhhh jjj',
+                    description: 'HTML, CSS, JavaScript, Vue3',
                     isBookmarked: false
                 },
                 {

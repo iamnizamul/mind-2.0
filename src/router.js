@@ -10,7 +10,8 @@ const router = createRouter({
         { path: '/', redirect: '/createnote' },
         { path: '/createnote', component: CreateNote },
         {
-            path: '/:id', component: NoteDetail, props: true
+            path: '/:id', component: NoteDetail,
+             props: true
         },
         {
             path: '/:id/editnote', component: EditNote

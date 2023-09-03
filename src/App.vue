@@ -22,7 +22,6 @@ import NotesList from "./components/noteslist/NotesList.vue";
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* background-color: #5f3dc4 */
   font-family: "Rubik", sans-serif;
 }
 
