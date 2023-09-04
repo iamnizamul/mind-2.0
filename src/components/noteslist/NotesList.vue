@@ -84,10 +84,10 @@ ul {
   transform: translateX(30px);
 }
 .note-enter-active {
-  transition: all 0.6s ease-out;
+  transition: all 0.3s ease-out;
 }
 .note-leave-active {
-  transition: all 0.6s ease-in;
+  transition: all 0.3s ease-in;
   position: absolute;
 }
 .note-enter-to,
@@ -96,7 +96,7 @@ ul {
   transform: translateY(0);
 }
 .note-move {
-  transition: transform 0.6s ease;
+  transition: transform 0.3s ease;
 }
 
 
