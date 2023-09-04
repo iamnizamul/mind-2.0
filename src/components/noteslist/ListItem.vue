@@ -55,6 +55,9 @@ li {
   color: #26184e;
 }
 
+li:active {
+}
+
 li:hover
 {
   border: 2px solid #26184e;
@@ -114,6 +117,10 @@ p {
 
 a {
   text-decoration: none;
+}
+
+a:active {
+    color: #26184e;
 }
 
 @media (max-width: 53em) {

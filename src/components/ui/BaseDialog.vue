@@ -78,6 +78,7 @@ header h2 {
 section {
   padding: 1rem;
   margin-bottom: 3rem;
+  margin-top: 1rem;
 }
 
 menu {
