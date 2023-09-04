@@ -55,9 +55,6 @@ li {
   color: #26184e;
 }
 
-li:active {
-}
-
 li:hover
 {
   border: 2px solid #26184e;
@@ -120,8 +117,12 @@ a {
 }
 
 a:active {
-    color: #26184e;
+  color: #26184e;
 }
+
+/* a:active {
+    color: #26184e;
+} */
 
 @media (max-width: 53em) {
   li {

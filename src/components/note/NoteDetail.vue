@@ -45,11 +45,14 @@ const router = useRouter();
 
 const showDialog = ref(false);
 
-// const id = computed(() => route.params.id);
-const id = ref('');
-id.value = route.params.id
+
+
+const id = computed(() => route.params.id);
+// const id = ref('');
+// id.value = route.params.id
 
 const findNote = computed(() => {
+  console.log(id.value);
   return store.findNote(id.value)
 });
 console.log(findNote.value);
@@ -64,10 +67,12 @@ function deleteNote() {
 }
 
 function accept() {
-  router.push({path: '/createnote'})
-  setTimeout(function(){
-    store.deleteNote(id.value);
-  }, 2)
+  const idDelete = id.value
+  setTimeout(function() {
+    console.log(id.value);
+    store.deleteNote(idDelete);
+  },2)
+    router.push({path: '/createnote'})
 }
 
 function decline() {

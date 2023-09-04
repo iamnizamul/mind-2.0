@@ -63,6 +63,10 @@ export const useNoteStore = defineStore({
         },
         deleteNote(id) {
             const findIndex = this.notes.findIndex((note) => note.id === id);
+            console.log(findIndex);
+            // setTimeout(function() {
+            //     console.log(findIndex);
+            // }, 2)
             this.notes.splice(findIndex, 1)
             this.setLocalStorage()
         },
