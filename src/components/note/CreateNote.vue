@@ -152,6 +152,7 @@ textarea {
   font-weight: 500;
   line-height: 1.6;
   outline: none;
+  resize: none;
 }
 
 textarea::placeholder {

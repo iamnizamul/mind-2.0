@@ -13,8 +13,8 @@
         </section>
         <menu>
           <slot name="actions">
-            <base-button @click="accept">Yes</base-button>
-            <base-button @click="decline">No</base-button>
+            <base-button class="yes-button" @click="accept">Yes</base-button>
+            <base-button class="no-button" @click="decline">No</base-button>
           </slot>
         </menu>
       </dialog>
@@ -83,7 +83,22 @@ section {
 menu {
   padding: 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  /* justify-content: space-around; */
+}
+
+.yes-button {
+  background-color: #432b89;
+  color: #fff;
+}
+
+.yes-button:hover {
+  background-color: #1c123b;
+}
+
+.no-button:hover {
+  background-color: #4c319d;
+  color: #fff;
 }
 
 .dialog-enter-from,
