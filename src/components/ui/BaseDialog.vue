@@ -97,8 +97,9 @@ menu {
 }
 
 .no-button:hover {
-  background-color: #4c319d;
-  color: #fff;
+  /* background-color: #4c319d;
+  color: #fff; */
+  background-color: #ddd;
 }
 
 .dialog-enter-from,
