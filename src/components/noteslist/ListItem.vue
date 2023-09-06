@@ -1,6 +1,7 @@
 <template>
-      <li :key="id">
-  <router-link :to="'/' + id">
+  <li :key="id">
+    <router-link :to="'/' + id">
+      <div class="list">
         <div class="title-container">
           <h2>{{ title }}</h2>
           <ion-icon
@@ -19,8 +20,9 @@
         <div class="desc-container">
           <p>{{ description }}</p>
         </div>
-  </router-link>
-      </li>
+      </div>
+    </router-link>
+  </li>
 </template>
 
 <script setup>
@@ -44,7 +46,7 @@ function toggleBookmark() {
 </script>
 
 <style scoped>
-li {
+.list {
   margin-bottom: 3rem;
   background-color: aliceblue;
   padding: 2rem;
@@ -55,19 +57,18 @@ li {
   color: #26184e;
 }
 
-li:hover
-{
+.list:hover {
   border: 2px solid #26184e;
   box-shadow: 0 0 3px 3px #4c319d;
   scale: 1.1;
   transition: all 0.3s ease;
 }
 
-.router-link-active li {
-    border: 2px solid #26184e;
-    box-shadow: 0 0 3px 3px #4c319d;
-    background: #c0c6cc;
-} 
+.router-link-active .list {
+  border: 2px solid #26184e;
+  box-shadow: 0 0 3px 3px #4c319d;
+  background: #c0c6cc;
+}
 
 .title-container {
   max-height: 2.8rem;
@@ -125,20 +126,19 @@ a:active {
 } */
 
 @media (max-width: 53em) {
-  li {
+  .list {
     padding: 1rem;
     margin-bottom: 2rem;
   }
 
-
   .bookmark-icon {
-  height: 2rem;
-  width: 2rem;
+    height: 2rem;
+    width: 2rem;
   }
 }
 
 @media (max-width: 37.5em) {
-  li {
+  .list {
     padding: 1rem;
     margin-bottom: 1.6rem;
   }
@@ -161,13 +161,13 @@ a:active {
   }
 
   .bookmark-icon {
-  height: 1.6rem;
-  width: 1.6rem;
+    height: 1.6rem;
+    width: 1.6rem;
   }
 }
 
 @media (max-width: 30em) {
-  li {
+  .list {
     padding: 0.5rem;
     margin-bottom: 1.2rem;
   }
@@ -190,9 +190,8 @@ a:active {
   }
 
   .bookmark-icon {
-  height: 1.2rem;
-  width: 1.2rem;
+    height: 1.2rem;
+    width: 1.2rem;
   }
 }
-
 </style>
