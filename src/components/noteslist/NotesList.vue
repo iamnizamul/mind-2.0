@@ -73,6 +73,7 @@ ul {
   color: white;
   text-align: center;
   font-size: 1.6rem;
+  padding-top: 1rem;
 }
 
 .note-enter-from {
@@ -115,6 +116,9 @@ ul {
 @media (max-width: 37.5em) {
   .list-container {
     margin: 1.5rem 1.5rem 1.5rem 1.5rem;
+  }
+  .empty-list {
+    font-size: 1rem;
   }
 }
 </style>
